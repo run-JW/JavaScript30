@@ -45,6 +45,48 @@
   </style>
 
   <script>
+    class App {
+      constructor() {
+        this.$spacing = document.querySelector('#spacing');
+        this.$blur = document.querySelector('#blur');
+        this.$base = document.querySelector('#base');
+        this.$hl = document.querySelector('.hl');
+        this.$image = document.querySelector('img');
+
+        this.setInit();
+        this.addEventListeners();
+      }
+
+      addEventListeners() {
+        this.$spacing.addEventListener('input', this.setSpacing.bind(this));
+        this.$blur.addEventListener('input', this.setBlur.bind(this));
+        this.$base.addEventListener('input', this.setColor.bind(this));
+      }
+
+      setSpacing() {
+        const value = this.$spacing.value;
+        this.$image.style.padding = `${value}px`;
+      }
+
+      setBlur() {
+        const value = this.$blur.value;
+        this.$image.style.filter = `blur(${value}px`;
+      }
+
+      setColor() {
+        const value = this.$base.value;
+        this.$hl.style.color = `${value}`;
+        this.$image.style.backgroundColor = `${value}`;
+      }
+
+      setInit() {
+        this.setSpacing();
+        this.setBlur();
+        this.setColor();
+      }
+    }
+
+    new App();
   </script>
 
 </body>
